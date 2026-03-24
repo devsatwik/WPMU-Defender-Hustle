@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wpmudev.com)",
+      "Bash(ls \"/Users/satwik/Documents/WPMU Defender & Hustle/\")",
+      "Bash(open \"/Users/satwik/Documents/WPMU Defender & Hustle/defender-settings-redesign.html\")",
+      "Bash(find \"/Users/satwik/Documents/WPMU Defender & Hustle\" -type f -name \"package.json\")",
+      "Bash(ls -la \"/Users/satwik/Documents/WPMU Defender & Hustle\")",
+      "Bash(find \"/Users/satwik/Documents/WPMU Defender & Hustle\" -type d)",
+      "Bash(find \"/Users/satwik/Documents/WPMU Defender & Hustle\" -type f)",
+      "Bash(find \"/Users/satwik/Documents/WPMU Defender & Hustle/.claude\" -type f)",
+      "Bash(cat \"/Users/satwik/Documents/WPMU Defender & Hustle/.claude/settings.local.json\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --yes localtunnel --help)",
+      "Bash(npx --yes localtunnel --port 8080)"
+    ]
+  }
+}
