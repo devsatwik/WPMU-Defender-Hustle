@@ -954,13 +954,13 @@
         <div class="page-view-title">Account Security</div>
         <div class="fw-layout">
           <div class="fw-sidebar">
-            <div class="fw-tab active" data-login="ln-mask-login">Mask Login Area</div>
-            <div class="fw-tab" data-login="ln-2fa">Two-Factor Auth</div>
-            <div class="fw-tab" data-login="ln-password">Password Rules</div>
-            <div class="fw-tab" data-login="ln-session">Session Protection</div>
-            <div class="fw-tab" data-login="ln-captcha">CAPTCHA</div>
+            <div class="fw-tab active" data-login="ln-mask-login">Hide Login URL</div>
+            <div class="fw-tab" data-login="ln-2fa">Two-Factor Authentication</div>
+            <div class="fw-tab" data-login="ln-password">Password Requirements</div>
+            <div class="fw-tab" data-login="ln-session">Session Security</div>
+            <div class="fw-tab" data-login="ln-captcha">Bot Protection (CAPTCHA)</div>
           </div>
-          <!-- Mask Login Area -->
+          <!-- Hide Login URL -->
           <div class="fw-content active" id="login-ln-mask-login">
             <div class="section-heading">Configuration</div>
             <div class="row">
@@ -996,7 +996,7 @@
               <button class="btn btn-blue">Save Changes</button>
             </div>
           </div>
-          <!-- Two-Factor Auth -->
+          <!-- Two-Factor Authentication -->
           <div class="fw-content" id="login-ln-2fa">
             <div class="section-heading">User Roles</div>
             <p style="font-size:12px;color:#888;margin-bottom:10px;">Choose the user roles to enable two-factor authentication for.</p>
@@ -1051,7 +1051,7 @@
               <button class="btn btn-blue">Save Changes</button>
             </div>
           </div>
-          <!-- Password Rules -->
+          <!-- Password Requirements -->
           <div class="fw-content" id="login-ln-password">
             <div class="section-heading">Strength requirements</div>
             <div class="row">
@@ -1087,7 +1087,7 @@
               <button class="btn btn-blue">Save Changes</button>
             </div>
           </div>
-          <!-- Session Protection -->
+          <!-- Session Security -->
           <div class="fw-content" id="login-ln-session">
             <div class="section-heading">Idle timeout</div>
             <div class="row">
@@ -1492,22 +1492,29 @@
           <div class="section-heading">Firewall alerts</div>
           <div class="row">
             <div class="row-info">
-              <div class="row-label">Login lockout <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when an IP is locked out from brute-force attempts</div>
+              <div class="row-label">Login Protection Lockout <i class="i-icon">?</i></div>
+              <div class="row-desc">When a user or IP is locked out for trying to access your login area</div>
             </div>
             <div class="toggle on" onclick="this.classList.toggle('on')"></div>
           </div>
           <div class="row">
             <div class="row-info">
-              <div class="row-label">404 lockout <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when an IP is locked out from 404 threshold</div>
+              <div class="row-label">404 Detection Lockout <i class="i-icon">?</i></div>
+              <div class="row-desc">When a user or IP is locked out for repeated hits on non-existent files</div>
             </div>
             <div class="toggle on" onclick="this.classList.toggle('on')"></div>
           </div>
           <div class="row">
             <div class="row-info">
-              <div class="row-label">User agent blocked <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when a user agent is blocked</div>
+              <div class="row-label">User Agent Lockout <i class="i-icon">?</i></div>
+              <div class="row-desc">When a user is locked out for trying to access your site using a banned user agent</div>
+            </div>
+            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="row">
+            <div class="row-info">
+              <div class="row-label">Limit email notifications for repeat lockouts <i class="i-icon">?</i></div>
+              <div class="row-desc">If you're getting too many emails from IPs who are repeatedly being locked out, you can turn them off for a period of time</div>
             </div>
             <div class="toggle" onclick="this.classList.toggle('on')"></div>
           </div>
@@ -1535,27 +1542,13 @@
             <div class="toggle on" onclick="this.classList.toggle('on')"></div>
           </div>
 
-          <div class="section-heading">Audit log alerts</div>
+          <div class="section-heading">Hardening alerts</div>
           <div class="row">
             <div class="row-info">
-              <div class="row-label">User role changes <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when a user's role is promoted or changed</div>
+              <div class="row-label">Security recommendation <i class="i-icon">?</i></div>
+              <div class="row-desc">Alert when a new security recommendation is available for your site</div>
             </div>
             <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-          </div>
-          <div class="row">
-            <div class="row-info">
-              <div class="row-label">Plugin/theme installed <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when new plugins or themes are installed</div>
-            </div>
-            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-          </div>
-          <div class="row">
-            <div class="row-info">
-              <div class="row-label">Settings modified <i class="i-icon">?</i></div>
-              <div class="row-desc">Alert when critical WordPress options are changed</div>
-            </div>
-            <div class="toggle" onclick="this.classList.toggle('on')"></div>
           </div>
 
           <div class="divider" style="margin:20px 0"></div>
@@ -1663,7 +1656,24 @@
             <div class="row-info">
               <div class="row-label">Frequency</div>
             </div>
-            <select class="select"><option>Daily</option><option selected>Weekly</option><option>Monthly</option></select>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-ghost" style="font-size:12px;padding:5px 12px">Daily</button>
+              <button class="btn btn-blue" style="font-size:12px;padding:5px 12px">Weekly</button>
+              <button class="btn btn-ghost" style="font-size:12px;padding:5px 12px">Monthly</button>
+            </div>
+          </div>
+          <div style="background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:16px;margin:8px 0 4px;">
+            <div style="display:flex;gap:24px;flex-wrap:wrap;">
+              <div>
+                <div style="font-size:11px;color:#888;margin-bottom:6px;">Day of the week</div>
+                <select class="select" style="min-width:130px"><option>Sunday</option><option selected>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select>
+              </div>
+              <div>
+                <div style="font-size:11px;color:#888;margin-bottom:6px;">Time of day</div>
+                <select class="select" style="min-width:110px"><option>12:00 AM</option><option selected>04:00 AM</option><option>06:00 AM</option><option>09:00 AM</option><option>12:00 PM</option><option>06:00 PM</option></select>
+              </div>
+            </div>
+            <div style="font-size:11px;color:#aaa;margin-top:10px;">Your timezone is set to +00:00, so your current time is 16:25.</div>
           </div>
 
           <div class="divider" style="margin:20px 0"></div>
